@@ -31,11 +31,11 @@
 import axios from 'axios';
 export default {
   name: 'App',
-  mounted() {
-      let geoScript = document.createElement('script');
-      geoScript.setAttribute('src', 'http://www.geoplugin.net/javascript.gp')
-      document.head.appendChild(geoScript);
-    },
+  // mounted() {
+  //     let geoScript = document.createElement('script');
+  //     //geoScript.setAttribute('src', 'http://www.geoplugin.net/javascript.gp')
+  //     document.head.appendChild(geoScript);
+  //   },
   data() {
     return {
       addresses: [],
@@ -70,7 +70,7 @@ export default {
       }); 
 
       let response = await axios.get("/api/ipInfo/" + this.clientAddress)
-      
+      //let response = await fetch('https://ipwhois.app/json/' + this.clientAddress);
       
       // await fetch('http://www.geoplugin.net/json.gp?ip=' + this.clientAddress)
       // .then(data => data.json())

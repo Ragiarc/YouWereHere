@@ -45,11 +45,11 @@ app.get('/api/addresses', function(req, res, next) {
 });
 
 app.get('/api/ipInfo/:ip', async (req, res) => {
-    let response = '';
     await fetch('http://www.geoplugin.net/json.gp?ip=' + req.params.ip)
-      .then(data => data.json())
-      .then(success => response = success);
-    res.send(response);
+      .then(data => res.json(data.data))
+      .catch(() => res.status(500).send({
+          message: "failed to get result from geoplugin"
+      }));
 })
 
 app.delete('/api/remove/:address', async (req,res) => {
