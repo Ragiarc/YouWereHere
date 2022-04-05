@@ -1,10 +1,17 @@
-const express = require('express');
-const bodyParser = require("body-parser");
-const mongoose = require('mongoose');
-const req = require('express/lib/request');
-const res = require('express/lib/response');
 
+import express from 'express';
+import bodyParser from 'body-parser'
+import mongoose from 'mongoose';
+import req from 'express/lib/request.js'
+import res from 'express/lib/response.js'
+//const express = require('express');
+//const bodyParser = require("body-parser");
+// const mongoose = require('mongoose');
+// const req = require('express/lib/request');
+// const res = require('express/lib/response');
 
+import fetch from 'node-fetch';
+//const fetch = await import('node-fetch')
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -24,8 +31,8 @@ const Address =  mongoose.model('Address', AddressSchema);
 
 
 app.get('/', function(req, res, next) {
-    console.log("made it");
-});
+    console.log("made it"); 
+}); 
 
 /* GET addresses. */
 app.get('/api/addresses', function(req, res, next) {
@@ -36,6 +43,14 @@ app.get('/api/addresses', function(req, res, next) {
         res.json(addresses);
       });
 });
+
+app.get('/api/ipInfo/:ip', async (req, res) => {
+    let response = '';
+    await fetch('http://www.geoplugin.net/json.gp?ip=' + req.params.ip)
+      .then(data => data.json())
+      .then(success => response = success);
+    res.send(response);
+})
 
 app.delete('/api/remove/:address', async (req,res) => {
     try {

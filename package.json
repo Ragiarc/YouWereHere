@@ -20,6 +20,8 @@
     "axios": "^0.26.1",
     "express": "^4.17.3",
     "generator": "^1.0.1",
-    "mongoose": "^6.2.9"
-  }
+    "mongoose": "^6.2.9",
+    "node-fetch": "^2.6.7"
+  },
+  "type": "module"
 }

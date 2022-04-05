@@ -62,7 +62,6 @@ export default {
       }
     },
     async addAddress() {
-      
       await fetch('https://api.ipify.org?format=json')
       .then(x => x.json())
       .then(({ ip }) => {
@@ -70,10 +69,12 @@ export default {
         this.selectedAddress = ip;
       }); 
       
-      let response = '';
-      await fetch('http://www.geoplugin.net/json.gp?ip=' + this.clientAddress)
-      .then(data => data.json())
-      .then(success => response = success);
+      let response = await axios.get("/api/ipInfo/" + this.clientAddress)
+      
+      
+      // await fetch('http://www.geoplugin.net/json.gp?ip=' + this.clientAddress)
+      // .then(data => data.json())
+      // .then(success => response = success);
       // .then(x => x.json()) {
       //   clientCity = x.geoplugin_city;
       // };
