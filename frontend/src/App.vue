@@ -19,7 +19,7 @@
     </main>
     <footer>
       <p>We add the IP address of every person who visits this page. Click on an IP address to learn more about them.</p>
-      <p>Our code is open source and can be found here: </p>
+      <p>Our code is open source and can be found here: <a href= "https://github.com/Ragiarc/YouWereHere.git">github</a></p>
     </footer>
   </div>
 </template>
