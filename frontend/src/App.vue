@@ -69,9 +69,11 @@ export default {
         this.selectedAddress = ip;
       }); 
 
-      let response = await axios.get("/api/ipInfo/" + this.clientAddress)
-      //let response = await fetch('https://ipwhois.app/json/' + this.clientAddress);
-      
+      //let response = await axios.get("/api/ipInfo/" + this.clientAddress)
+      let response = '';
+      await fetch('https://ipwhois.app/json/' + this.clientAddress)
+      .then(data => data.json())
+      .then(success => response = success);
       // await fetch('http://www.geoplugin.net/json.gp?ip=' + this.clientAddress)
       // .then(data => data.json())
       // .then(success => response = success);
@@ -89,9 +91,9 @@ export default {
       // .then(({ geoplugin_countryName }) => {
       //   nation = geoplugin_countryName;
       // }); 
-      let clientCity = response.data.geoplugin_city;
-      let region = response.data.geoplugin_region;
-      let nation = response.data.geoplugin_countryName;
+      let clientCity = response.city;
+      let region = response.region;
+      let nation = response.country;
       var today = new Date();
       var dd = String(today.getDate()).padStart(2, '0');
       var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
