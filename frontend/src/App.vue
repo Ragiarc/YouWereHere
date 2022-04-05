@@ -33,7 +33,7 @@ export default {
   name: 'App',
   mounted() {
       let geoScript = document.createElement('script');
-      geoScript.setAttribute('src', 'http://www.geoplugin.net/javascript.gp')
+      geoScript.setAttribute('src', '//www.geoplugin.net/javascript.gp')
       document.head.appendChild(geoScript);
     },
   data() {
@@ -71,7 +71,7 @@ export default {
       }); 
       
       let response = '';
-      await fetch('http://www.geoplugin.net/json.gp?ip=' + this.clientAddress)
+      await fetch('/www.geoplugin.net/json.gp?ip=' + this.clientAddress)
       .then(data => data.json())
       .then(success => response = success);
       // .then(x => x.json()) {
