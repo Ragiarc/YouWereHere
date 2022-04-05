@@ -68,7 +68,7 @@ export default {
         this.clientAddress = ip;
         this.selectedAddress = ip;
       }); 
-      
+
       let response = await axios.get("/api/ipInfo/" + this.clientAddress)
       
       
@@ -89,9 +89,9 @@ export default {
       // .then(({ geoplugin_countryName }) => {
       //   nation = geoplugin_countryName;
       // }); 
-      let clientCity = response.geoplugin_city;
-      let region = response.geoplugin_region;
-      let nation = response.geoplugin_countryName;
+      let clientCity = response.data.geoplugin_city;
+      let region = response.data.geoplugin_region;
+      let nation = response.data.geoplugin_countryName;
       var today = new Date();
       var dd = String(today.getDate()).padStart(2, '0');
       var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
