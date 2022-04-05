@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/Ragiarc/YouWereHere#readme",
   "dependencies": {
+    "axios": "^0.26.1",
     "express": "^4.17.3",
-    "generator": "^1.0.1"
+    "generator": "^1.0.1",
+    "mongoose": "^6.2.9"
   }
 }
